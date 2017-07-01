@@ -2,6 +2,9 @@
 assets
 output
 
+# генерация за счет программного кода, тысячи файлов
+dataset/preview
+
 # Byte-compiled / optimized / DLL files
 src/__pycache__/
 *$py.class
