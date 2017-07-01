@@ -37,7 +37,7 @@ def generate_dataset(clsfy, datagen):
                 break
 
 
-def get_dataset():
+def create_dataset():
     """
     функция, вызываемая извне для генерации набора данных
     :return:

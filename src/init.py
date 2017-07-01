@@ -6,7 +6,8 @@ from skimage.filters import roberts
 from skimage.transform import downscale_local_mean
 
 OUTPUT_PREFIX = './output/'
-DATA_PATH = './dataset/preview/'  # DATA_PATH = './dataset/'
+DATA_PATH = './dataset/preview/'
+# DEFAULT_DATA = './dataset/'
 
 
 def make_edge_image(res, out_name, folder):
@@ -32,7 +33,7 @@ def get_gray_scale(filename):
     :param filename: имя исходного изображение
     :return: чернобелое изображение с размытием
     """
-    rgb = imread(filename) [200: 400, 300:800]
+    rgb = imread(filename)  # [200: 400, 300:800]
     src = rgb[:, :, 2]  # получили синюю компоненту RGB
     sig = exposure.adjust_sigmoid(src)
     gauss = ndi.gaussian_filter(sig, 3)  # размытие по Гауссу
@@ -46,13 +47,12 @@ def collect_images(folder):
     data_path = DATA_PATH + folder
 
     the_list = [name for name in os.listdir(data_path)
-               if os.path.isfile(os.path.join(data_path, name))]
+                if os.path.isfile(os.path.join(data_path, name))]
 
     for name in the_list:
         result = get_gray_scale(data_path + name)
-        make_edge_image(result, "result-" + str(i), folder)
+        make_edge_image(result, folder[0:-1] + '-' + str(i), folder)
         i += 1
-
 
 
 def make_model_from_dataset():

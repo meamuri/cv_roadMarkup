@@ -45,9 +45,13 @@ def match(refs, img):
     return best_name
 
 
+def print_refs(refs):
+    pass
+
+
 def just_do_it():
-    markup = data.imread('./output/markup/result-1.jpg')
-    unmarkup = data.imread('./output/unmarkup/result-1.jpg')
+    markup = data.imread('./output/markup/markup-3.jpg')
+    unmarkup = data.imread('./output/unmarkup/unmarkup-5.jpg')
     # wall = data.load('rough-wall.png')
 
     refs = {
