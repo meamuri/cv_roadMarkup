@@ -1,16 +1,20 @@
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
 import os
 
-
 DATASET_PATH = "./dataset/"
 
 
 def generate_dataset(clsfy, datagen):
     """
+    функция генерирует большой датасет на основе ограниченного числа фотографий
+    :param clsfy: строка
+        содержащая путь к файлам и семантический смысл генерируемых объектов
+        так, в нашем случае, если это
+        'markup/', то это папка с фотографиями дорожной разметки пешеходных переходов, а если
+        'unmarkup/', то фото дороги без разметки пешеходного
 
-    :param clsfy: "markup/" or "unmarkup/"
-    :param datagen:
-    :return:
+    :param datagen: объект-генератор тестового набора данных
+    :return: None
     """
     dataset_path = DATASET_PATH + clsfy
     im_list = [name for name in os.listdir(dataset_path)
@@ -33,3 +37,19 @@ def generate_dataset(clsfy, datagen):
                 break
 
 
+def get_dataset():
+    """
+    функция, вызываемая извне для генерации набора данных
+    :return:
+    """
+    datagen = ImageDataGenerator(
+        rotation_range=40,
+        width_shift_range=0.2,
+        height_shift_range=0.2,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True,
+        fill_mode='nearest')
+
+    generate_dataset("markup/", datagen=datagen)
+    generate_dataset("unmarkup/", datagen=datagen)
