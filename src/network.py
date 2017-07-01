@@ -58,12 +58,10 @@ def just_do_it():
 
     # classify rotated textures
     print('Rotated images matched against references using LBP:')
-    print('original: brick, rotated: 30deg, match result: ',
+    print('original: markup, rotated: 30deg, match result: ',
           match(refs, rotate(markup, angle=30, resize=False)))
-    print('original: brick, rotated: 70deg, match result: ',
-          match(refs, rotate(markup, angle=70, resize=False)))
-    print('original: grass, rotated: 145deg, match result: ',
-          match(refs, rotate(unmarkup, angle=145, resize=False)))
+    print('original: unmarkup, rotated: 70deg, match result: ',
+          match(refs, rotate(unmarkup, angle=70, resize=False)))
 
     # plot histograms of LBP of textures
     fig, ((ax1, ax2), (ax4, ax5)) = plt.subplots(
