@@ -6,7 +6,7 @@ from skimage.filters import roberts
 from skimage.transform import downscale_local_mean
 
 OUTPUT_PREFIX = 'output/'
-
+DATA_PATH = './dataset/'
 
 def make_edge_image(res, out_name):
     """
@@ -54,11 +54,16 @@ def make_model_from_dataset():
     :return: None
     """
     import os.path
-    dataset_path = "./dataset"
-    cnt = len([name for name in os.listdir(dataset_path)
-               if os.path.isfile(os.path.join(dataset_path, name))])
-    for i in range(1, cnt + 1):
-        prefix = str(i)
-        filename = 'dataset/'+ prefix + '.jpg'
-        result = get_gray_scale(filename)
-        make_edge_image(result, "result" + prefix)
+    i = 1
+
+    dataset_path = DATA_PATH + "markup/"
+    im_list = [DATA_PATH + "markup/" + name for name in os.listdir(dataset_path)
+               if os.path.isfile(os.path.join(dataset_path, name))]
+    dataset_path = DATA_PATH + "unmarkup/"
+    im_list += [DATA_PATH + "unmarkup/" + name for name in os.listdir(dataset_path)
+               if os.path.isfile(os.path.join(dataset_path, name))]
+
+    for name in im_list:
+        result = get_gray_scale(name)
+        make_edge_image(result, "result-" + str(i))
+        i += 1
