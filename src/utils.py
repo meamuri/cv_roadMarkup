@@ -3,6 +3,8 @@ from skimage.filters import roberts, sobel, scharr, prewitt
 from skimage.feature import canny
 
 
+# import theano, keras  # возможно пригодяся
+
 def test(res, out_name):
     # filename = out_name + '.jpg'
     # imsave(filename, res)
