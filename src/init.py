@@ -38,7 +38,11 @@ def get_gray_scale(filename):
 
 
 def make_model_from_dataset():
-    for i in range(1, 7):
+    import os.path
+    dataset_path = "./dataset"
+    cnt = len([name for name in os.listdir(dataset_path)
+               if os.path.isfile(os.path.join(dataset_path, name))])
+    for i in range(1, cnt + 1):
         prefix = str(i)
         filename = 'dataset/'+ prefix + '.jpg'
         result = get_gray_scale(filename)
