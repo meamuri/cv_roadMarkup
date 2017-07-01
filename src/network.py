@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from skimage.transform import rotate
 from skimage.feature import local_binary_pattern
 from skimage import data
-import os
 
 # settings for LBP
 RADIUS = 2
@@ -43,10 +42,6 @@ def match(refs, img):
             best_score = score
             best_name = name
     return best_name
-
-
-def print_refs(refs):
-    pass
 
 
 def just_do_it():

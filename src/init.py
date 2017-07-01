@@ -6,7 +6,7 @@ from skimage.filters import roberts
 from skimage.transform import downscale_local_mean
 
 OUTPUT_PREFIX = './output/'
-DATA_PATH = './dataset/preview/'
+DATA_PATH = './dataset/'  # './dataset/preview/'
 # DEFAULT_DATA = './dataset/'
 
 
