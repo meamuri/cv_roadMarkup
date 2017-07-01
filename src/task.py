@@ -42,6 +42,7 @@ def process_image_file(image_path):
     Returns:
       list of float: feature vector on success, None otherwise.
     """
+    # return data.imread(image_path)
     image_fp = StringIO(open(image_path, 'rb').read())
     try:
         image = Image.open(image_fp)
@@ -124,7 +125,7 @@ def train(training_path_a='markup/', training_path_b='unmarkup/', print_metrics=
       A classifier (sklearn.svm.SVC).
     """
     training_a = process_directory('output/' + training_path_a)  # get_images(training_path_a)
-    training_b = get_images('output/' + training_path_b)
+    training_b = process_directory('output/' + training_path_b)  # get_images(training_path_b)
     # data contains all the training data (a list of feature vectors)
     the_data = training_a + training_b
     # target is the list of target classes for each feature vector: a '1' for
