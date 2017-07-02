@@ -1,4 +1,4 @@
-from src.main import run
+from src.application import run
 
 """
 модуль является точкой входа в приложение
@@ -8,7 +8,7 @@ from src.main import run
 def main():
     """
     функция запускает приложение, инициализируемое
-    методом run из пакета src.app.main
+    методом run из пакета src.application
     :return: None
     """
     run()
