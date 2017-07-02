@@ -7,7 +7,7 @@ def general_app():
     while True:
         print_main_menu()
         scan = input("Введите пункт меню -> ")
-        action = input_to_digit(user_input=scan)
+        action = input_to_digit(user_input=scan, item_max=4)
         if action == 1:  # обработать
             make_model_from_dataset()
         elif action == 2:  # создать
@@ -26,7 +26,7 @@ def next_app():
     while True:
         print_sub_menu()
         scan = input("Введите пункт меню -> ")
-        action = input_to_digit(user_input=scan)
+        action = input_to_digit(user_input=scan, item_max=1)
         if action == 1:  # обработать
             pass
         elif action == 0:

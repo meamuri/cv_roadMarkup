@@ -1,4 +1,8 @@
 def print_help():
+    """
+    Функция печатает информацию о созданном приложении и о том, как им пользоваться
+    :return: None
+    """
     print('\n')
     print('Курсовая работа студента 3 курса ВГУ, ПММ, МОиАИС')
     print('Реализованные модули:')
@@ -12,6 +16,10 @@ def print_help():
 
 
 def print_main_menu():
+    """
+    Функция печатает основное меню
+    :return:
+    """
     print('\n')
     print("1.\tОбработать фотографии.")
     print("\tТестовый набор должен находиться в папке 'dataset' каталога программы")
@@ -25,13 +33,28 @@ def print_main_menu():
 
 
 def print_sub_menu():
+    """
+    Функция печатает меню подприложения
+    :return:
+    """
     print('\n')
     print("1.\tРаспознать есть ли дорожная разметка на фото")
     print("0.\tВыход")
 
 
-def input_to_digit(user_input):
-    if len(user_input) != 1 or user_input[0] < '0' or user_input[0] > '4':
-        return None
+def input_to_digit(user_input, item_max):
+    """
+    функция проверяет, что введено число, соответствующее пункту меню
+    :param user_input: пользовательский ввод
+    :param item_max: максимальный пункт меню в диалоге,
+        больше которого пункт меню не должен быть
+    :return:
+    """
+    if len(user_input) != 1 or user_input[0] < '0' or user_input[0] > '9':
+        return -1
 
-    return int(user_input)
+    res = int(user_input)
+    if res > item_max:
+        res = -1
+
+    return res
