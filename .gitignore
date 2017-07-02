@@ -3,10 +3,11 @@ assets
 output
 
 # генерация за счет программного кода, тысячи файлов
-dataset/preview
+dataset/preview/markup/*
+dataset/preview/unmarkup/*
 
 # в этой папке будут лежать файлы для распознавания после обучения
-predict
+predict/*
 
 # Byte-compiled / optimized / DLL files
 src/__pycache__/

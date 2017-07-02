@@ -49,7 +49,7 @@ def get_reg():
 
     return reg
 
-    
+
 def smthng_that_doesnt_work(training_path_a='markup/', training_path_b='unmarkup/', print_metrics=True):
     """
     Trains a classifier. training_path_a and training_path_b should be
