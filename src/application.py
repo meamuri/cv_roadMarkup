@@ -1,4 +1,5 @@
 from .dialog import *
+from .app.init import make_model_from_dataset
 
 
 def general_app():
@@ -7,7 +8,7 @@ def general_app():
         scan = input("Введите пункт меню -> ")
         action = input_to_digit(user_input=scan)
         if action == 1:  # обработать
-            pass
+            make_model_from_dataset()
         elif action == 2:  # создать
             pass
         elif action == 3:  # обучить. Выход из функции с True!
