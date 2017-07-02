@@ -10,25 +10,6 @@ from skimage import data
 PREDICT_FOLDER = './predict/'
 
 
-def work_with_network(classifier):
-    """
-    функция получает классификатор, и с его помощью
-    для всех фотографий папки predict определяет, содержится ли на ней дорожная разметка
-    или нет
-    :param classifier: обученая нейронная сеть
-    :return: None
-    """
-    import os
-    all_images = [data.imread(PREDICT_FOLDER + name) for name in os.listdir(PREDICT_FOLDER)
-                  if os.path.isfile(os.path.join(PREDICT_FOLDER, name))]
-
-    for ind, img in enumerate(all_images):
-        res = process_image(img)
-        # classifier.predict(img)
-        
-    print('нейронную сеть необходимо обучить!')
-
-
 def general_app():
     """
     Программа, осуществляющая подготовку всех данных для работы с нейросетью
@@ -84,3 +65,21 @@ def run():
         print("\nПриложение по распознаванию дорожной разметки готово и запущено")
         next_app(classifier)
     print("\nПрограмма завершила работу!")
+
+
+def work_with_network(classifier):
+    """
+    функция получает классификатор, и с его помощью
+    для всех фотографий папки predict определяет, содержится ли на ней дорожная разметка
+    или нет
+    :param classifier: обученая нейронная сеть
+    :return: None
+    """
+    import os
+    all_images = [data.imread(PREDICT_FOLDER + name) for name in os.listdir(PREDICT_FOLDER)
+                  if os.path.isfile(os.path.join(PREDICT_FOLDER, name))]
+
+    for ind, img in enumerate(all_images):
+        res = process_image(img)
+        # print(ind + 1, '\tmaybe ok')  # classifier.predict(img)
+    print('нейронную сеть необходимо обучить!')
