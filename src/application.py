@@ -57,9 +57,9 @@ def next_app(classifier):
         action = input_to_digit(user_input=scan, item_max=3)
         if action == 1:  # обработать
             work_with_network(classifier)
-        if action == 2:  # иллюстрировать
+        elif action == 2:  # иллюстрировать
             show_graphics()
-        if action == 3:  # справка
+        elif action == 3:  # справка
             print_help_for_sub()
         elif action == 0:
             return
