@@ -24,7 +24,9 @@ def work_with_network(classifier):
 
     for ind, img in enumerate(all_images):
         res = process_image(img)
-        print(ind + 1, '\tmaybe ok', classifier.predict(res))  # classifier.predict(img)
+        # classifier.predict(img)
+        
+    print('нейронную сеть необходимо обучить!')
 
 
 def general_app():
