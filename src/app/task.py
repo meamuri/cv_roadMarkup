@@ -14,6 +14,10 @@ from PIL import Image
 import os
 
 
+def make_network():
+    return linear_model.LinearRegression()
+
+
 def process_directory(directory):
     """Returns an array of feature vectors for all the image files in a
     directory (and all its subdirectories). Symbolic links are ignored.

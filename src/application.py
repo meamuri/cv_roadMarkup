@@ -2,6 +2,25 @@ from .dialog import *
 from .app.init import make_model_from_dataset
 from .app.utils import create_dataset
 from .app.network import show_graphics
+from .app.task import make_network
+from skimage import data
+
+PREDICT_FOLDER = './predict/'
+
+
+def work_with_network(classifier):
+    """
+    функция получает классификатор, и с его помощью
+    для всех фотографий папки predict определяет, содержится ли на ней дорожная разметка
+    или нет
+    :param classifier: обученая нейронная сеть
+    :return: None
+    """
+    import os
+    all_images = [data.imread(name) for name in os.listdir(PREDICT_FOLDER)
+                  if os.path.isfile(os.path.join(PREDICT_FOLDER, name))]
+    for img in all_images:
+        print('maybe ok', img, classifier)  # classifier.predict(img)
 
 
 def general_app():
@@ -18,16 +37,16 @@ def general_app():
         elif action == 2:  # создать
             create_dataset()
         elif action == 3:  # обучить. Выход из функции с True!
-            return True
+            return make_network()
         elif action == 4:  # справка
             print_help()
         elif action == 0:
-            return False
+            return None
         else:
             print("\nНекорректный ввод! Пожалуйста, попробуйте снова")
 
 
-def next_app():
+def next_app(classifier):
     """
     Программа, позволяющая взаимодействовать с обученной нейросетью
     :return: None
@@ -37,7 +56,7 @@ def next_app():
         scan = input("Введите пункт меню -> ")
         action = input_to_digit(user_input=scan, item_max=3)
         if action == 1:  # обработать
-            pass
+            work_with_network(classifier)
         if action == 2:  # иллюстрировать
             show_graphics()
         if action == 3:  # справка
@@ -53,8 +72,9 @@ def run():
     Программа, вызываемая из точки входа приложения
     :return: None
     """
-    if general_app():
+    classifier = general_app()
+    if classifier:
         print("\nНейросеть успешно обучена!")
         print("\nПриложение по распознаванию дорожной разметки готово и запущено")
-        next_app()
+        next_app(classifier)
     print("\nПрограмма завершила работу!")
