@@ -3,6 +3,8 @@ from .app.init import make_model_from_dataset
 from .app.utils import create_dataset
 from .app.network import show_graphics
 from .app.task import make_network
+from .app.processing import process_image
+
 from skimage import data
 
 PREDICT_FOLDER = './predict/'
@@ -17,10 +19,12 @@ def work_with_network(classifier):
     :return: None
     """
     import os
-    all_images = [data.imread(name) for name in os.listdir(PREDICT_FOLDER)
+    all_images = [data.imread(PREDICT_FOLDER + name) for name in os.listdir(PREDICT_FOLDER)
                   if os.path.isfile(os.path.join(PREDICT_FOLDER, name))]
-    for img in all_images:
-        print('maybe ok', img, classifier)  # classifier.predict(img)
+
+    for ind, img in enumerate(all_images):
+        res = process_image(img)
+        print(ind + 1, '\tmaybe ok')  # classifier.predict(img)
 
 
 def general_app():
