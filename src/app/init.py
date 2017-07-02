@@ -18,6 +18,23 @@ def make_model_from_dataset():
     :return: None
     """
 
+    def logging(folder, count, is_total):
+        """
+        выфв
+        :param folder:
+        :param count:
+        :param is_total:
+        :return:
+        """
+        print("\nПо итогу сформировано " + str(count) + " файлов в каталоге ./output/" + folder)
+        print("К изображением применены:")
+        print("\t* черно-белый фильтр")
+        print("\t* размытие гаусса фильтр")
+        print("\t* выделение краев Робертса")
+        if is_total:
+            print("файлы разложены по соответствующим папкам markup и unmarkup")
+            print("Модуль завершил работу")
+
     def make_edge_image(res, out_name, folder):
         """
         функция применяет алгоритм roberts к чернобелому изображению
@@ -66,6 +83,10 @@ def make_model_from_dataset():
             result = get_gray_scale(data_path + name)
             make_edge_image(result, folder[0:-1] + '-' + str(i), folder)
             i += 1
+        return i
 
-    collect_images("markup/")
-    collect_images("unmarkup/")
+    cnt1 = collect_images("markup/")
+    cnt2 = collect_images("unmarkup/")
+    logging("markup/", cnt1, False)
+    logging("unmarkup/", cnt2, False)
+    logging("", cnt1 + cnt2, True)
