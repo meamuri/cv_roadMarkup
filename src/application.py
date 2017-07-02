@@ -23,22 +23,22 @@ def general_app():
 
 
 def next_app():
-    pass
+    while True:
+        print_sub_menu()
+        scan = input("Введите пункт меню -> ")
+        action = input_to_digit(user_input=scan)
+        if action == 1:  # обработать
+            pass
+        elif action == 0:
+            return
+        else:
+            print("\nНекорректный ввод! Пожалуйста, попробуйте снова")
 
 
 def run():
     if general_app():
+        print("\nНейросеть успешно обучена!")
+        print("\nПриложение по распознаванию дорожной разметки готово и запущено")
         next_app()
     print("\nПрограмма завершила работу!")
 
-
-    # create_dataset()
-    # make_model_from_dataset()
-    # just_do_it()
-
-    # get_coefs()
-    # classifier = train()
-    #
-    # features = data.imread('output/_11.jpg')
-    #
-    # classifier.predict(features)
