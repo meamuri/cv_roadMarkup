@@ -5,6 +5,9 @@ output
 # генерация за счет программного кода, тысячи файлов
 dataset/preview
 
+# в этой папке будут лежать файлы для распознавания после обучения
+predict
+
 # Byte-compiled / optimized / DLL files
 src/__pycache__/
 *$py.class
