@@ -1,5 +1,6 @@
 from .dialog import *
 from .app.init import make_model_from_dataset
+from .app.utils import create_dataset
 
 
 def general_app():
@@ -10,7 +11,7 @@ def general_app():
         if action == 1:  # обработать
             make_model_from_dataset()
         elif action == 2:  # создать
-            pass
+            create_dataset()
         elif action == 3:  # обучить. Выход из функции с True!
             return True
         elif action == 4:  # справка
@@ -18,7 +19,7 @@ def general_app():
         elif action == 0:
             return False
         else:
-            print("Некорректный ввод! Пожалуйста, попробуйте снова")
+            print("\nНекорректный ввод! Пожалуйста, попробуйте снова")
 
 
 def next_app():
@@ -28,7 +29,7 @@ def next_app():
 def run():
     if general_app():
         next_app()
-    print("Программа завершила работу!")
+    print("\nПрограмма завершила работу!")
 
 
     # create_dataset()
