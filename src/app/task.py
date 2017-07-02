@@ -172,7 +172,9 @@ def smthng_that_doesnt_work(training_path_a='markup/', training_path_b='unmarkup
 
 def train():
     # Loading the Digits dataset
-    X = get_images('markup/') + get_images('unmarkup/')
+    mup = get_images('markup/')
+    umup = get_images('unmarkup/')
+    X = mup + umup
 
     # To apply an classifier on this data, we need to flatten the image, to
     # turn the data in a (samples, feature) matrix:
@@ -180,7 +182,7 @@ def train():
     # n_samples = len(digits.images)
     # X = digits.images.reshape((n_samples, -1))
     # y = digits.target
-    y = get_images('train/markup/') + get_images('train/unmarkup/')
+    y = [1] * len(mup) + [0] * len(umup)
     # Split the dataset in two equal parts
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.5, random_state=0)
