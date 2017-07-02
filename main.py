@@ -1,21 +1,17 @@
-from src.init import make_model_from_dataset
-from src.network import just_do_it
-from src.task import train
-# from src.utils import create_dataset
-from skimage import data
+from src.main import run
+
+"""
+модуль является точкой входа в приложение
+"""
 
 
 def main():
-    # create_dataset()
-    # make_model_from_dataset()
-    # just_do_it()
-
-    # get_coefs()
-    classifier = train()
-
-    features = data.imread('output/_11.jpg')
-
-    classifier.predict(features)
+    """
+    функция запускает приложение, инициализируемое
+    методом run из пакета src.app.main
+    :return: None
+    """
+    run()
 
 
 if __name__ == "__main__":
